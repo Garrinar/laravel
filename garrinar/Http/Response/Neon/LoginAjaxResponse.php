@@ -3,7 +3,7 @@
 namespace Garrinar\Http\Response\Neon;
 
 
-use Garrinar\Http\Response\AjaxResponse as Response;
+use Garrinar\Http\Response\JsonResponse as Response;
 
 class LoginAjaxResponse extends Response
 {

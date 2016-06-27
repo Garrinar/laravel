@@ -13,6 +13,8 @@ class JsonResponse extends \Illuminate\Http\JsonResponse
 {
     public function __construct($content, $status, array $headers = [], $options = 0)
     {
+//        $headers['Access-Control-Allow-Origin'] = '*';
+//        $headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS';
         parent::__construct($content, $status, $headers, $options);
     }
 
