@@ -6,10 +6,10 @@
  * Time: 5:33
  */
 
-namespace App\Helpers;
+namespace Garrinar\Helpers;
 
 
-class FormHelper
+class Form
 {
     public $elements = [];
     public $action = '';

@@ -2,7 +2,7 @@
 
 namespace Garrinar\Models\Eloquent{
 
-    use App\Traits\ErrorsTrait;
+    use Garrinar\Traits\ErrorsTrait;
     use Illuminate\Database\Eloquent\Model as EloquentModel;
 
     /**

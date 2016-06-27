@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Models\Core;
+namespace Garrinar\Models\Email;
 
+use Garrinar\Models\Eloquent\Model;
+use Garrinar\Models\Users\BaseUser as User;
+use Garrinar\Modules\Filesystem\Distributed\FilesystemModel;
 use Illuminate\Mail\Message;
 use \Mail;
 
 /**
- * Class Emails
+ * Class Email
  * @package App\Models\Core
  *
  * @property int $id
@@ -26,7 +29,7 @@ use \Mail;
  * @property int $file5_id
  *
  */
-class Emails extends AbsModel
+class Email extends Model
 {
     const
         TYPE_SIGNATURE = 1;
@@ -40,43 +43,43 @@ class Emails extends AbsModel
     }
 
     /**
-     * @return Files
+     * @return FilesystemModel
      */
     public function file1()
     {
-        return $this->belongsTo(Files::class)->first();
+        return $this->belongsTo(FilesystemModel::class)->first();
     }
 
     /**
-     * @return Files
+     * @return FilesystemModel
      */
     public function file2()
     {
-        return $this->belongsTo(Files::class)->first();
+        return $this->belongsTo(FilesystemModel::class)->first();
     }
 
     /**
-     * @return Files
+     * @return FilesystemModel
      */
     public function file3()
     {
-        return $this->belongsTo(Files::class)->first();
+        return $this->belongsTo(FilesystemModel::class)->first();
     }
 
     /**
-     * @return Files
+     * @return FilesystemModel
      */
     public function file4()
     {
-        return $this->belongsTo(Files::class)->first();
+        return $this->belongsTo(FilesystemModel::class)->first();
     }
 
     /**
-     * @return Files
+     * @return FilesystemModel
      */
     public function file5()
     {
-        return $this->belongsTo(Files::class)->first();
+        return $this->belongsTo(FilesystemModel::class)->first();
     }
 
     public function send($template, $params = [])
@@ -122,7 +125,7 @@ class Emails extends AbsModel
         return $mail;
     }
 
-    public function addAttachment(Files $file)
+    public function addAttachment(FilesystemModel $file)
     {
         for ($i = 1; $i <= 5; $i++) {
             $column = "file{$i}_id";
