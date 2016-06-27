@@ -1,0 +1,17 @@
+{
+    "name": "garrinar/all",
+    "type": "library",
+    "description": "",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "garrinar",
+            "email": "garrinar@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "require-dev": {
+      "laravel/framework": "5.2.*"
+    }
+}
