@@ -2,10 +2,9 @@
 
 namespace Garrinar\Http\Controllers {
 
-    use App\Http\Controllers\Controller;
-    use App\Models\Api\Response;
+    use Garrinar\Http\Response\AjaxResponse as Response;
 
-    class AjaxController extends Controller
+    class AjaxController extends BaseController
     {
         public function unauthorizedResponse()
         {
@@ -14,7 +13,7 @@ namespace Garrinar\Http\Controllers {
 
         public function internalErrorResponse()
         {
-            return $this->Response('Internal server error', 500);
+            return $this->response('Internal server error', 500);
         }
 
         public function response($data = [], $status = 200)
