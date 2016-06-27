@@ -3,7 +3,6 @@
 namespace Garrinar\Modules\Filesystem\Distributed;
 
 use League\Flysystem\Util;
-use Symfony\Component\Finder\Finder;
 use League\Flysystem\Filesystem as FlySystem;
 
 class Filesystem extends FlySystem

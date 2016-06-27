@@ -4,7 +4,6 @@ namespace Garrinar\Modules\Filesystem\Distributed\Commands;
 
 
 use Illuminate\Console\Command;
-use Illuminate\Database\Schema\Blueprint;
 
 /**
  * Created by PhpStorm.

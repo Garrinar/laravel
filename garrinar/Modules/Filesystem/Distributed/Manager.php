@@ -4,7 +4,7 @@ namespace Garrinar\Modules\Filesystem\Distributed;
 
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Support\Arr;
-use Garrinar\Filesystem\Distributed\Adapter as DistributedAdapter;
+use Garrinar\Modules\Filesystem\Distributed\Adapter as DistributedAdapter;
 use League\Flysystem\AdapterInterface;
 
 

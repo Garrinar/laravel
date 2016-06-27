@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Garrinar\Files;
+namespace Garrinar\Helpers\Files;
 
 
 class Pdf

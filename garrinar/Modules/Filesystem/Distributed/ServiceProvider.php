@@ -1,10 +1,10 @@
 <?php
 
-namespace Garrinar\Filesystem\Distributed;
+namespace Garrinar\Modules\Filesystem\Distributed;
 
 
-use Garrinar\Filesystem\Distributed\Commands\CreateFilesTable;
-use Garrinar\Filesystem\Distributed\Manager as FilesystemManager;
+use Garrinar\Modules\Filesystem\Distributed\Commands\CreateFilesTable;
+use Garrinar\Modules\Filesystem\Distributed\Manager as FilesystemManager;
 use Illuminate\Filesystem\FilesystemServiceProvider;
 
 class ServiceProvider extends FilesystemServiceProvider

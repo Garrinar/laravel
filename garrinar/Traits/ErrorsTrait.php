@@ -6,7 +6,7 @@
  * Time: 16:01
  */
 
-namespace App\Traits;
+namespace Garrinar\Traits;
 
 
 trait ErrorsTrait

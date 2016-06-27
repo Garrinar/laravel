@@ -6,7 +6,7 @@
  * Time: 15:10
  */
 
-namespace Garrinar\Moldules\Tester\Providers;
+namespace Garrinar\Modules\Tester\Providers;
 
 
 use Illuminate\Support\ServiceProvider;

@@ -15,14 +15,14 @@ use SplFileInfo;
 
 /**
  * Class Adapter
- * @package Garrinar\Filesystem\Distributed
+ * @package Garrinar\Modules\Filesystem\Distributed
  *
  *
  */
 class Adapter extends Local
 {
 
-    /** @var  Model $model */
+    /** @var  \Garrinar\Modules\Filesystem\Distributed\FilesystemModel $model */
     protected $model;
 
     /** @var  Collection $distributedPathCollection */
@@ -32,7 +32,7 @@ class Adapter extends Local
 
     public function __construct($root, $writeFlags, $linkHandling, array $permissions)
     {
-        $this->model = new Model($this);
+        $this->model = new FilesystemModel($this);
         parent::__construct($root, $writeFlags, $linkHandling, $permissions);
     }
 
