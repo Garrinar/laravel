@@ -13,5 +13,10 @@
     "require": {},
     "require-dev": {
       "laravel/framework": "5.2.*"
+    },
+  "autoload": {
+    "psr-4": {
+      "Garrinar\\" : "garrinar"
     }
+  }
 }
