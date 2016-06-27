@@ -36,15 +36,5 @@ namespace Garrinar\Http\Controllers {
         {
             return redirect();
         }
-
-        public function jsonResponse($data = [], $status = 200)
-        {
-            $response = [
-                'response' => $data,
-                'status' => $status == 200 ? 'success ' : 'error',
-                'statusCode' => $status
-            ];
-            return $this->response()->json($response, $status);
-        }
     }
 }

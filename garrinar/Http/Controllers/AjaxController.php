@@ -8,7 +8,7 @@ namespace Garrinar\Http\Controllers {
     {
         public function unauthorizedResponse()
         {
-            return $this->jsonResponse('Unauthorized', 401);
+            return $this->response('Unauthorized', 401);
         }
 
         public function internalErrorResponse()
@@ -16,9 +16,14 @@ namespace Garrinar\Http\Controllers {
             return $this->response('Internal server error', 500);
         }
 
-        public function response($data = [], $status = 200)
+        public function response($data = [], $status = Response::HTTP_OK)
         {
-            return new Response($data, $status);
+            $response = [
+                'response' => $data,
+                'status' => $status == Response::HTTP_OK ? 'success ' : 'error',
+                'statusCode' => $status
+            ];
+            return new Response($response, $status);
         }
     }
 }
