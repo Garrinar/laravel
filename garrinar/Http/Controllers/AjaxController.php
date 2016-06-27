@@ -21,7 +21,5 @@ namespace Garrinar\Http\Controllers {
         {
             return new Response($data, $status);
         }
-
-
     }
 }

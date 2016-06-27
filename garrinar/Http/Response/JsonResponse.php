@@ -9,11 +9,11 @@
 namespace Garrinar\Http\Response;
 
 
-class JsonResponse extends BaseResponse
+class JsonResponse extends \Illuminate\Http\JsonResponse
 {
-    public function __construct($content, $status, array $headers = [])
+    public function __construct($content, $status, array $headers = [], $options = 0)
     {
-        parent::__construct($content, $status, $headers);
+        parent::__construct($content, $status, $headers, $options);
     }
 
 }

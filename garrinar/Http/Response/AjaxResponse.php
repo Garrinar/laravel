@@ -15,7 +15,7 @@ class AjaxResponse extends JsonResponse
 
     /**
      * @param array $data
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return JsonResponse
      */
     public function setData($data = [])
     {
