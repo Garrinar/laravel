@@ -12,10 +12,3 @@ class Garrinar extends Singletone
         return $this->get(Router::class);
     }
 }
-
-if (!function_exists('garrinar')) {
-    function garrinar()
-    {
-        return Garrinar::getInstance();
-    }
-}
