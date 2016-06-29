@@ -15,8 +15,9 @@
       "laravel/framework": "5.2.*"
     },
   "autoload": {
-    "files": ["garrinar/Helpers/helpers.php"],
-    "classmap": ["garrinar/Helpers/Garrinar.php"],
+    "files": [
+      "garrinar/Helpers/helpers.php"],
+    "classmap": ["garrinar/Helpers"],
     "psr-4": {
       "Garrinar\\" : "garrinar"
     }

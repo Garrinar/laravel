@@ -36,5 +36,10 @@ namespace Garrinar\Http\Controllers {
         {
             return redirect();
         }
+
+        public function request()
+        {
+            return $this->getRouter()->getCurrentRequest();
+        }
     }
 }

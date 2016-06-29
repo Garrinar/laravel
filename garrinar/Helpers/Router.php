@@ -4,8 +4,6 @@
 namespace Garrinar\Helpers;
 
 
-use Illuminate\Routing\Route;
-
 class Router
 {
 
@@ -29,11 +27,15 @@ class Router
                 ], function (\Illuminate\Routing\Router $router) use ($controllers) {
                 foreach ($controllers as $controller) {
                     $className = class_basename($controller);
+                    $prefix = @explode('controller', mb_strtolower($className))[0];
                     /** @var $router */
-                    $router->group(['prefix' => mb_strtolower($className)], function (\Illuminate\Routing\Router $router) use ($className) {
+                    $router->group([
+                        'prefix' => $prefix,
+                        'namespace' => 'Grids',
+                    ], function (\Illuminate\Routing\Router $router) use ($className) {
                         $router->get('get', $className . '@get');
-                        $router->post('filter', $className . '@filter');
-                        $router->post('sort', $className . '@sort');
+                        $router->get('filter', $className . '@filter');
+                        $router->get('sort', $className . '@sort');
                     });
                 }
             });
