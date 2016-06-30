@@ -87,14 +87,31 @@ namespace Garrinar\Http\Controllers {
             return $this->response();
         }
 
+        public function onRowPrepare($row)
+        {
+            return $row;
+        }
+
+        public function onDataPrepare($row)
+        {
+            return $row;
+        }
+
         /**
-         * @param \Illuminate\Support\Collection $items
+         * @param array $items
          * @return array
          */
-        protected function prepareData($items)
+        protected function prepareData(array $items)
         {
-            return collect($items)->map(function($item) {
-                return collect($item)->values();
+            if (method_exists($this, 'onDataPrepare')) {
+                $items = $item = $this->onRowPrepare($items);
+            }
+
+            return collect($items)->map(function ($item) {
+                if (method_exists($this, 'onRowPrepare')) {
+                    $item = $this->onRowPrepare($item);
+                }
+                return collect($item)->only($this->getModel()->getVisible())->values();
             })->toArray();
         }
     }
