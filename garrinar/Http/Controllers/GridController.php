@@ -67,6 +67,7 @@ namespace Garrinar\Http\Controllers {
 
         public function get()
         {
+            $this->getQuery()->select($this->getModel()->getVisible());
             return $this->response();
         }
 
@@ -87,12 +88,12 @@ namespace Garrinar\Http\Controllers {
             return $this->response();
         }
 
-        public function onRowPrepare($row)
+        protected function onRowPrepare($row)
         {
             return $row;
         }
 
-        public function onDataPrepare($row)
+        protected function onDataPrepare($row)
         {
             return $row;
         }
@@ -107,12 +108,16 @@ namespace Garrinar\Http\Controllers {
                 $items = $item = $this->onRowPrepare($items);
             }
 
-            return collect($items)->map(function ($item) {
-                if (method_exists($this, 'onRowPrepare')) {
-                    $item = $this->onRowPrepare($item);
-                }
-                return collect($item)->only($this->getModel()->getVisible())->values();
-            })->toArray();
+            return collect($items)
+                ->map(function ($item) {
+                    if (method_exists($this, 'onRowPrepare')) {
+                        $item = $this->onRowPrepare($item);
+                    }
+                    return
+                        collect($item)
+                            ->only($this->getModel()->getVisible())
+                            ->values();
+                })->toArray();
         }
     }
 }

@@ -40,6 +40,15 @@ class Builder extends EloquentBuilder
     }
 
     /**
+     * @param array $columns
+     * @return mixed
+     */
+    public function select($columns = ['*'])
+    {
+        return parent::select($columns);
+    }
+
+    /**
      * @param $key
      * @param string $value
      * @return static
