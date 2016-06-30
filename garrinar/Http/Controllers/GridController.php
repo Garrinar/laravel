@@ -6,6 +6,7 @@ namespace Garrinar\Http\Controllers {
     use Garrinar\Http\Response\GridResponse;
     use Garrinar\Models\Eloquent\Builder;
     use Garrinar\Models\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Collection;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
 
@@ -25,9 +26,9 @@ namespace Garrinar\Http\Controllers {
 
         public function __construct()
         {
-//            if (!$this->request()->ajax()) {
-//                abort(401);
-//            }
+            if (!$this->request()->ajax()) {
+                abort(401);
+            }
 
             $this->currentPage = $this->request()->get('page', 1);
         }
@@ -56,9 +57,10 @@ namespace Garrinar\Http\Controllers {
                     ->paginate($this->perPage, ['*'], 'page', $this->currentPage);
         }
 
-        public function response($data = [], $status = Response::HTTP_OK) {
+        public function response($data = [], $status = Response::HTTP_OK)
+        {
             $result = $this->execute();
-            $data['data']= array_values($result->items());
+            $data['data'] = $this->prepareData($result->items());
             return
                 new GridResponse($data);
         }
@@ -83,6 +85,17 @@ namespace Garrinar\Http\Controllers {
                 ->getQuery()
                 ->where($request->toArray());
             return $this->response();
+        }
+
+        /**
+         * @param \Illuminate\Support\Collection $items
+         * @return array
+         */
+        protected function prepareData($items)
+        {
+            return collect($items)->map(function($item) {
+                return collect($item)->values();
+            })->toArray();
         }
     }
 }
