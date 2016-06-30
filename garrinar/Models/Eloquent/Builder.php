@@ -22,7 +22,7 @@ class Builder extends EloquentBuilder
 {
     /**
      * @param array $columns
-     * @return static|Collection
+     * @return Model|Collection
      */
     public function first($columns = ['*'])
     {
@@ -32,7 +32,7 @@ class Builder extends EloquentBuilder
 
     /**
      * @param array $columns
-     * @return $this
+     * @return Model|Collection
      */
     public function get($columns = ['*'])
     {
@@ -41,7 +41,7 @@ class Builder extends EloquentBuilder
 
     /**
      * @param array $columns
-     * @return mixed
+     * @return static
      */
     public function select($columns = ['*'])
     {

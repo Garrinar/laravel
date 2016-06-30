@@ -12,9 +12,6 @@ namespace Garrinar\Http\Controllers {
 
     abstract class GridController extends AjaxController
     {
-        protected $perPage = 15;
-        protected $currentPage = 1;
-
         /**
          * @var Model
          */
@@ -24,13 +21,14 @@ namespace Garrinar\Http\Controllers {
         protected $query;
 
 
-        public function __construct()
+        public function __construct(Model $model)
         {
             if (!$this->request()->ajax()) {
                 abort(401);
             }
 
-            $this->currentPage = $this->request()->get('page', 1);
+            $this->model = $model;
+            $this->query = $this->model->query();
         }
 
         protected function getQuery()
@@ -43,31 +41,21 @@ namespace Garrinar\Http\Controllers {
             return $this->model;
         }
 
-        protected function setModel($model)
-        {
-            $this->model = $model;
-            $this->query = $this->model->query();
-        }
-
         protected function execute()
         {
-            return
-                $this
-                    ->getQuery()
-                    ->get($this->getModel()->getVisible());
-//                    ->paginate($this->perPage, ['*'], 'page', $this->currentPage);
+            return $this->getQuery()->get($this->getModel()->getVisible())->toArray();
         }
 
         public function response($data = [], $status = Response::HTTP_OK)
         {
-            $data['data'] = $this->prepareData($this->execute());
+            $result = $this->execute();
+            $data['data'] = $this->prepareData($result);
             return
                 new GridResponse($data);
         }
 
         public function get()
         {
-            $this->getQuery()->select($this->getModel()->getVisible());
             return $this->response();
         }
 
@@ -93,9 +81,9 @@ namespace Garrinar\Http\Controllers {
             return $row;
         }
 
-        protected function onDataPrepare($row)
+        protected function onDataPrepare($data)
         {
-            return $row;
+            return $data;
         }
 
         /**
@@ -105,19 +93,20 @@ namespace Garrinar\Http\Controllers {
         protected function prepareData(array $items)
         {
             if (method_exists($this, 'onDataPrepare')) {
-                $items = $item = $this->onRowPrepare($items);
+                $items = $this->onDataPrepare($items);
             }
 
-            return collect($items)
-                ->map(function ($item) {
-                    if (method_exists($this, 'onRowPrepare')) {
-                        $item = $this->onRowPrepare($item);
-                    }
-                    return
-                        collect($item)
-                            ->only($this->getModel()->getVisible())
-                            ->values();
-                })->toArray();
+            return
+                collect($items)
+                    ->map(function ($item) {
+                        if (method_exists($this, 'onRowPrepare')) {
+                            $item = $this->onRowPrepare($item);
+                        }
+                        return
+                            collect($item)
+                                ->values();
+                    })
+                    ->toArray();
         }
     }
 }
