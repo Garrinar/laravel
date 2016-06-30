@@ -58,7 +58,7 @@ namespace Garrinar\Http\Controllers {
 
         public function response($data = [], $status = Response::HTTP_OK) {
             $result = $this->execute();
-            $data['data']= $result->items();
+            $data['data']= array_values($result->items());
             return
                 new GridResponse($data);
         }
