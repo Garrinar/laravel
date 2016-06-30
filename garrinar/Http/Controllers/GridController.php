@@ -54,13 +54,13 @@ namespace Garrinar\Http\Controllers {
             return
                 $this
                     ->getQuery()
-                    ->paginate($this->perPage, ['*'], 'page', $this->currentPage);
+                    ->get($this->getModel()->getVisible());
+//                    ->paginate($this->perPage, ['*'], 'page', $this->currentPage);
         }
 
         public function response($data = [], $status = Response::HTTP_OK)
         {
-            $result = $this->execute();
-            $data['data'] = $this->prepareData($result->items());
+            $data['data'] = $this->prepareData($this->execute());
             return
                 new GridResponse($data);
         }
