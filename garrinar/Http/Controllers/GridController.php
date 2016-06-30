@@ -6,7 +6,6 @@ namespace Garrinar\Http\Controllers {
     use Garrinar\Http\Response\GridResponse;
     use Garrinar\Models\Eloquent\Builder;
     use Garrinar\Models\Eloquent\Model;
-    use Illuminate\Database\Eloquent\Collection;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
 
@@ -28,6 +27,9 @@ namespace Garrinar\Http\Controllers {
             }
 
             $this->model = $model;
+            if(!count($this->model->getVisible())) {
+                $this->model->setVisible($this->getModel()->getFillable());
+            }
             $this->query = $this->model->query();
         }
 
@@ -95,6 +97,7 @@ namespace Garrinar\Http\Controllers {
             if (method_exists($this, 'onDataPrepare')) {
                 $items = $this->onDataPrepare($items);
             }
+
 
             return
                 collect($items)
