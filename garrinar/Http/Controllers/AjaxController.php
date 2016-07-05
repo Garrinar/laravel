@@ -18,12 +18,7 @@ namespace Garrinar\Http\Controllers {
 
         public function response($data = [], $status = Response::HTTP_OK)
         {
-            $response = [
-                'response' => $data,
-                'status' => $status == Response::HTTP_OK ? 'success ' : 'error',
-                'statusCode' => $status
-            ];
-            return new Response($response, $status);
+            return new Response($data, $status);
         }
     }
 }
