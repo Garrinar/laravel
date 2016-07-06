@@ -44,7 +44,7 @@ class Adapter extends Local
 
     public function cleanModel($attributes = [], $exist = false)
     {
-        $this->model = $this->model = new Model($this, $attributes);
+        $this->model = $this->model = new FilesystemModel($this, $attributes);
         return $this;
     }
 
