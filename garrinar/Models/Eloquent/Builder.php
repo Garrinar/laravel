@@ -67,4 +67,14 @@ class Builder extends EloquentBuilder
         return parent::whereNull($key);
     }
 
+    /**
+     * @param $key
+     * @param $value
+     * @return static
+     */
+    public function groupBy($key, $value)
+    {
+        return parent::groupBy($key, $value);
+    }
+
 }
