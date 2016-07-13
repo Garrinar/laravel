@@ -36,7 +36,7 @@ namespace Garrinar\Models\Eloquent{
 
         public function relation($related, $foreignKey = null, $otherKey = null, $relation = null)
         {
-            return $this->belongsTo($related)->firstOrNew();
+            return $this->belongsTo($related)->firstOrNew([]);
         }
     }
 }

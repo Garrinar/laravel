@@ -93,6 +93,10 @@ class FilesystemModel extends EloquentModel
 
     public function getUrl()
     {
-        return 'http://' . $_SERVER['HTTP_HOST'] . $this->getPublicPath() . '/' . $this->path;
+        if($this->exists) {
+            return 'http://' . $_SERVER['HTTP_HOST'] . $this->getPublicPath() . '/' . $this->path;
+        } else {
+            return '';
+        }
     }
 }

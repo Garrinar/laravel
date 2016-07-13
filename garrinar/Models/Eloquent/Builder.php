@@ -35,7 +35,7 @@ class Builder extends EloquentBuilder
      * @param array $attributes
      * @return \Illuminate\Database\Eloquent\Model
      */
-    public function firstOrNew(array $attributes = [])
+    public function firstOrNew(array $attributes)
     {
         return parent::firstOrNew($attributes);
     }
