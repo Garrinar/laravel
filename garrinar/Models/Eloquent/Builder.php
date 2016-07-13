@@ -27,7 +27,17 @@ class Builder extends EloquentBuilder
     public function first($columns = ['*'])
     {
         /** @var Model $result */
-        return parent::first($columns);
+        $model = parent::first($columns);
+        return $model ?: $this->model->newInstance([]);
+    }
+
+    /**
+     * @param array $attributes
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function firstOrNew(array $attributes = [])
+    {
+        return parent::firstOrNew($attributes);
     }
 
     /**

@@ -33,5 +33,10 @@ namespace Garrinar\Models\Eloquent{
         {
             return parent::query();
         }
+
+        public function relation($related, $foreignKey = null, $otherKey = null, $relation = null)
+        {
+            return $this->belongsTo($related)->firstOrNew();
+        }
     }
 }
