@@ -82,9 +82,9 @@ class Builder extends EloquentBuilder
      * @param $value
      * @return static
      */
-    public function groupBy($key, $value = '')
+    public function groupBy($key)
     {
-        return parent::groupBy($key, $value);
+        return parent::groupBy($key);
     }
 
 }
