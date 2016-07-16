@@ -36,7 +36,7 @@ class CreateFilesTable extends Command
     {
         $files = glob(__DIR__ . '/../Migrations/*');
         natsort($files);
-        $migDir = $this->getLaravel()->basePath() . '/database/Migrations/';
+        $migDir = $this->getLaravel()->basePath() . '/database/migrations/';
         if (count($files)) {
             collect($files)
                 ->each(function ($item) use ($migDir) {

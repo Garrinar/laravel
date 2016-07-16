@@ -1,28 +1,34 @@
 {
-    "name": "garrinar/laravel",
-    "type": "library",
-    "description": "",
-    "license": "GNU",
-    "authors": [
-        {
-            "name": "garrinar",
-            "email": "garrinar@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {},
-    "require-dev": {
-      "laravel/framework": "5.2.*"
-    },
+  "name": "garrinar/laravel",
+  "type": "library",
+  "description": "",
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "garrinar",
+      "email": "garrinar@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "barryvdh/laravel-ide-helper": "2.*",
+    "doctrine/dbal": "2.5.*",
+    "fzaninotto/faker": "~1.4",
+    "symfony/css-selector": "2.8.*|3.0.*",
+    "symfony/dom-crawler": "2.8.*|3.0.*"
+  },
+  "require-dev": {
+    "laravel/framework": "5.2.*"
+  },
   "autoload": {
     "files": [
       "garrinar/Helpers/helpers.php"
-      ],
+    ],
     "classmap": [
-        "garrinar/Helpers"
-        ],
+      "garrinar/Helpers"
+    ],
     "psr-4": {
-      "Garrinar\\" : "garrinar"
+      "Garrinar\\": "garrinar"
     }
   }
 }
