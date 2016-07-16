@@ -1,5 +1,5 @@
 {
-    "name": "garrinar/all",
+    "name": "garrinar/laravel",
     "type": "library",
     "description": "",
     "license": "GNU",
@@ -16,8 +16,11 @@
     },
   "autoload": {
     "files": [
-      "garrinar/Helpers/helpers.php"],
-    "classmap": ["garrinar/Helpers"],
+      "garrinar/Helpers/helpers.php"
+      ],
+    "classmap": [
+        "garrinar/Helpers"
+        ],
     "psr-4": {
       "Garrinar\\" : "garrinar"
     }
