@@ -11,4 +11,12 @@ class Garrinar extends Singletone
     {
         return $this->get(Router::class);
     }
+
+    /**
+     * @return Env
+     */
+    public function env()
+    {
+        return $this->get(Env::class);
+    }
 }
