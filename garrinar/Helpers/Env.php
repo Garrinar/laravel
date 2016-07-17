@@ -26,7 +26,7 @@ class Env
     {
         if(Str::startsWith('get', $name)) {
             $method = Str::camel($name);
-            if(method_exists(static::class, $method)) {
+            if(method_exists(new static(), $method)) {
                 $class = static::class;
                 if(Arr::exists($attributes, 0)) {
                     return $class::$method($attributes[0]);
